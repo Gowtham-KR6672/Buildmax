@@ -1,0 +1,16 @@
+# Render Blueprint - https://render.com/docs/blueprint-spec
+# In the Render dashboard: New > Blueprint > pick this repo, and Render
+# reads this file to create the service.
+services:
+  - type: web
+    name: buildmax-redesign
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
